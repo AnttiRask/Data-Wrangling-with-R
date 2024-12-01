@@ -482,10 +482,13 @@ prop.table( table(test$spam))
 
 
 ```{r}
+set.seed(17)
+
 # Training the model
 rf <- randomForest(spam ~ ., data=train, 
                    importance=TRUE, ntree= 250)
 
+rf
 ```
 
 Let's see the performance of the trained model.
@@ -644,6 +647,7 @@ return(input)
 ```
 
 ```{r}
+set.seed(17)
 
 # Predicting text 1
 input <- prepare_input(text1, spam_words= spam_words)

@@ -130,7 +130,7 @@ Functions to be used with `summarise()`.
 df %>% group_by(workclass) %>% summarise(n())
 
 # n_distinct() shows the count of unique observations in each group
-df %>% group_by(workclass) %>% summarise(n_distinct())
+df %>% pull(workclass) %>% n_distinct()
 
 # sum(!is.na()) shows the count of Non NA observations
 df %>% summarise(sum(!is.na(workclass)))
@@ -215,7 +215,7 @@ But there is another way, much easier, by the way, using the function `na_if()`.
 # Replacing values "?" with NA (tidyverse 1.3.1)
 ### This may throw an error in newer versions of tidyverse, so refer to the next code below ###
 
-df_replaced <- df %>% na_if('?') 
+# df_replaced <- df %>% na_if('?') 
 #-----------------------------------------------------------------------------------------------
 
 # Replacing values "?" with NA (tidyverse 1.3.2)

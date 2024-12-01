@@ -147,8 +147,10 @@ dim(dups)
 real_dup <- c()
 for (row in 1:279) {
   equal_cols = sum(dups[row,] == dups[row+1,])
-  if (equal_cols == 12) {real_dup <- c(real_dup, row) }
+  if (equal_cols == 11) {real_dup <- c(real_dup, row) } # MISTAKE, equal_cols was 12
 }
+
+real_dup # ADDED THIS TO SEE THE RESULTS OF THE PREVIOUS FOR LOOP
 
 # Look at duplicates
 head(dups[c(9,81),])

@@ -65,9 +65,8 @@ head(dataset)
 As the text input for this exercise, I will use the chapter 10 of this book.
 We will initially read the word document, then extract only the textual information and get rid of NAs and blank cells.
 ```{r}
-
 # Read word document
-chapter10 <- read_docx('Data_Wrangling_With_R_Chapter10.docx')
+chapter10 <- read_docx('Data_Wrangling_With_R_Chapter10_for_wordcloud.docx')
 content <- docx_summary(chapter10)
 
 # Extract only textual information and drop Blank cells and NAs.

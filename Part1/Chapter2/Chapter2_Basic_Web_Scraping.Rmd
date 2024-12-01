@@ -71,7 +71,7 @@ From here, let's say we want only the first paragraph, then we can use the follo
 p1 <- gdp %>% html_elements("p") %>% html_text()
 
 # We are using [2] in because the [1] is just a space break.
-p1[2]
+p1[3] # MISTAKE, so I changed 2 -> 3
 
 ```
 
@@ -108,8 +108,7 @@ It is possible to look at the objects in our content.
 
 ```{r}
 # Check the content in the API
-str(content(treasury_api))
-
+str(content(treasury_api), max.level = 3)
 ```
 
 And to create a dataframe out of it, here is the code needed. We will transform the content in a json text, then parse it and finally extract only the `data` variable to create our dataframe `df`.

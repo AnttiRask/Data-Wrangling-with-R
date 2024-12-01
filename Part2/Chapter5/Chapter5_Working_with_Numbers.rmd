@@ -114,7 +114,7 @@ Normalization example
 
 # Normalization
 max_grade <- max(df$grade)
-df$grade <- df$grade/max_grade
+df$normalized_grade <- df$grade/max_grade # MISTAKE df$grade -> df$normalized_grade
 
 df
 ```
@@ -211,7 +211,7 @@ median(var1)
 median(var2)
 
 # percentiles or quantiles
-quantiles(var1, c(0.25, 0.5, 0.75))
+quantile(var1, c(0.25, 0.5, 0.75)) # MISTAKE quantiles -> quantile
 
 
 

@@ -22,7 +22,6 @@ library(lubridate)
 library(tidyverse)
 library(mice)
 library(corrplot)
-
 ```
 
 **1. Import Texas Housing Sales to our session**
@@ -169,21 +168,21 @@ txhouses$median[is.na(txhouses$median)] <- median(txhouses$median, na.rm=T)
 
 ```
 
-
-
 Let's use the library mice to input data. It uses Regression as predictor for missing values.
 
 ```{r}
 # Use mice inputer
-impute <- mice(data.frame(txhouses[,7:8]), seed = 123)
-impute_data <- complete(impute, 1)
-
+impute         <- mice(data.frame(txhouses %>% select(7:8), seed = 123))
+impute_data    <- complete(impute, 1)
 
 # Replace the columns with the imputed ones
 txhouses_clean <- txhouses %>% 
-  mutate(listings = impute_data[,1],
-         inventory = impute_data[,2])
+  mutate(
+    listings  = impute_data %>% pull(1),
+    inventory = impute_data %>% pull(2)
+  )
 
+txhouses_clean
 ```
 
 ```{r}
@@ -218,7 +217,10 @@ Let's plot histograms.
 txhouses_clean <- as.data.frame(txhouses_clean)
 
 # Create a grid for plotting multiple histograms
-par(mfrow = c(4,2))
+par(
+  mfrow = c(4,2),
+  mar   = c(3,3,3,3)
+)
 
 # Plot histograms
 for (var in colnames(txhouses_clean[2:8])) {

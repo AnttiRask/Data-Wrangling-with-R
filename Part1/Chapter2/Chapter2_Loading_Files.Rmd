@@ -38,7 +38,7 @@ It will be saved to the same folder where your script or RProj file is saved. To
 
 # Save a variable to csv
 write.csv(df, 'oranges.csv', row.names = FALSE)
-write_csv()
+# write_csv() <- MISTAKE
 ```
 
 
@@ -48,7 +48,7 @@ write_csv()
 
 ```{r}
 # Load dataset from csv using base R
-path = 'C:/Users/.../oranges.csv'
+path = 'oranges.csv' # Had to change the path in order to get it to work
 df <-  read.csv(path)
 ```
 
@@ -61,7 +61,7 @@ df <-  read.csv(path)
 library(tidyverse)
 
 # setup the file path
-path = 'C:/Users/.../oranges.csv'
+path = 'oranges.csv' # Had to change the path in order to get it to work
 
 # Load the file
 df <-  read_csv(path)
@@ -74,7 +74,7 @@ df <-  read_csv(path)
 library(data.table)
 
 # setup the file path
-path = 'C:/Users/.../oranges.csv'
+path = 'oranges.csv' # Had to change the path in order to get it to work
 
 # Load the file
 df <-  data.table::fread(path)
@@ -88,7 +88,7 @@ In the example below, we're considering blank values and "No Record".
 # Listing entries to consider NA
 
 # setup the file path
-path2 = 'C:/Users/.../oranges_modified.csv'
+path2 = 'oranges_modified.csv' # Had to create the file, because it didn't exist originally 
 
 df <- read_csv(path2, na = c('','No Record') )
 ```
